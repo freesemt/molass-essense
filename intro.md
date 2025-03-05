@@ -11,3 +11,5 @@ To get started, follow [Molass Library Tutorial](https://freesemt.github.io/mola
 For detailed description of each fucntion, check out [Molass Library Reference](https://freesemt.github.io/molass-reference/).
 
 The source code of this library can be found at [the library repository](https://github.com/freesemt/molass-library).
+
+This book is powered by [JupyterBook](https://jupyterbook.org).
