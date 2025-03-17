@@ -1,0 +1,21 @@
+# Molass Library Theory
+
+```{warning}
+This book is in preparation to be publicly available in May, 2025.
+```
+
+Molass Library is a rewrite of [MOLASS](https://www.jstage.jst.go.jp/article/biophysico/20/1/20_e200001/_article) which is an analytical tool for SEC-SAXS experiment data currently hosted at [Photon Factory](https://pfwww.kek.jp/saxs/MOLASS.html). It is designed to be suitable for scripting in Jupyter notebooks, thereby obtaining greater flexibility compared to the predecessor thanks to the Python ecosystem diversity.
+
+This document describes the theoretical essense of the library. You can read the chapters of the left sidebar in the order. Otherwise, glance over the contents or use the search box to find what you are interested in.
+
+See also as you proceed:
+
+* [Molass Library Tutorial](https://freesemt.github.io/molass-tutorial/)
+* [Molass Library Reference](https://freesemt.github.io/molass-library/)
+* [Molass Library Repository](https://github.com/freesemt/molass-library)
+
+```{tip}
+You can switch between dark and light modes using the toggle button at the upper right corner of any page.
+```
+
+This book is powered by [Jupyter Book](https://jupyterbook.org).

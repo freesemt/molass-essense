@@ -2,8 +2,33 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: chapters/intro
+options:
+  numbered: 3
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: chapters/01/matrix-repr
+  title: Matrix Representation
+- file: chapters/02/baseline
+  title: Baseline Models
+- file: chapters/03/simple-curves
+  title: Simple Curves
+- file: chapters/04/lowrank
+  title: Low Rank Factorization
+- file: chapters/05/svd
+  title: Singular Value Decomposition
+- file: chapters/06/mp-inverse
+  title: Moore-Penrose Inverse
+- file: chapters/07/optimization
+  title: Optimization
+- file: chapters/08/saxs-basics
+  title: SAXS Basics
+- file: chapters/09/chromat-basics
+  title: Chromatography Basics
+- file: chapters/10/stochastic
+  title: Stochastic Models
+- file: chapters/11/kinetic
+  title: Kinetic Models
+- file: chapters/12/interparticle
+  title: Interparticle Effects
+- file: chapters/13/errors
+  title: Error Porpagation
