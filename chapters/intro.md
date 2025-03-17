@@ -1,4 +1,4 @@
-# Molass Library Theory
+# Molass Library Essense
 
 ```{warning}
 This book is in preparation to be publicly available in May, 2025.

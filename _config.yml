@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Molass Library Theory
+title: Molass Library Essense
 author: The Molass Community
 copyright: "2025"
 logo: images/molamola.png
@@ -19,7 +19,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/freesemt/molass-theory  # Online location of your book
+  url: https://github.com/freesemt/molass-essense  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
