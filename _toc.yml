@@ -8,16 +8,14 @@ options:
 chapters:
 - file: chapters/01/data-illust
   title: Data Illustration
-- file: chapters/02/baseline
-  title: Baseline Models
-- file: chapters/03/simple-curves
-  title: Simple Curves
+- file: chapters/03/matrices
+  title: Matrices from Curves
 - file: chapters/04/lowrank
   title: Low Rank Factorization
-- file: chapters/05/svd
-  title: Singular Value Decomposition
-- file: chapters/06/mp-inverse
+- file: chapters/05/mp-inverse
   title: Moore-Penrose Inverse
+- file: chapters/06/svd
+  title: Singular Value Decomposition
 - file: chapters/07/optimization
   title: Optimization
 - file: chapters/08/saxs-basics
@@ -30,5 +28,9 @@ chapters:
   title: Kinetic Models
 - file: chapters/12/interparticle
   title: Interparticle Effects
-- file: chapters/13/errors
+- file: chapters/13/baseline
+  title: Baseline Models
+- file: chapters/14/errors
   title: Error Porpagation
+- file: chapters/90/references
+  title: References

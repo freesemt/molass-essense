@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Molass Library Essense
-author: The Molass Community
+author: Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 copyright: "2025"
 logo: images/molamola.png
 exclude_patterns: ["README.md"]
@@ -16,6 +16,10 @@ execute:
 latex:
   latex_documents:
     targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
 
 # Information about where the book exists on the web
 repository:
