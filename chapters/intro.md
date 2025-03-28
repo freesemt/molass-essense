@@ -1,4 +1,4 @@
-# Molass Library Essense
+# Molass Library Essence
 
 ```{warning}
 This book is in preparation to be publicly available in August, 2025.
