@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Optimization &#8212; Molass Library Essense</title>
+    <title>6. Optimization &#8212; Molass Library Essense</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. SAXS Basics" href="../08/saxs-basics.html" />
-    <link rel="prev" title="6. Moore-Penrose Inverse" href="../06/mp-inverse.html" />
+    <link rel="next" title="7. SAXS Basics" href="../08/saxs-basics.html" />
+    <link rel="prev" title="5. Singular Value Decomposition" href="../06/svd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,18 +182,19 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01/data-illust.html">1. Data Illustration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02/baseline.html">2. Baseline Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/simple-curves.html">3. Simple Curves</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/lowrank.html">4. Low Rank Factorization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/svd.html">5. Singular Value Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/mp-inverse.html">6. Moore-Penrose Inverse</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">8. SAXS Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/chromat-basics.html">9. Chromatography Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/stochastic.html">10. Stochastic Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/kinetic.html">11. Kinetic Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/interparticle.html">12. Interparticle Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/errors.html">13. Error Porpagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/matrices.html">2. Matrices from Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lowrank.html">3. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/mp-inverse.html">4. Moore-Penrose Inverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/svd.html">5. Singular Value Decomposition</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">7. SAXS Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/chromat-basics.html">8. Chromatography Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/stochastic.html">9. Stochastic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11/kinetic.html">10. Kinetic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/interparticle.html">11. Interparticle Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13/baseline.html">12. Baseline Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14/errors.html">13. Error Porpagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90/references.html">14. References</a></li>
 </ul>
 
     </div>
@@ -360,7 +361,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="optimization">
-<h1><span class="section-number">7. </span>Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -394,12 +395,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../06/mp-inverse.html"
+       href="../06/svd.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Moore-Penrose Inverse</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Singular Value Decomposition</p>
       </div>
     </a>
     <a class="right-next"
@@ -407,7 +408,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>SAXS Basics</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SAXS Basics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -427,7 +428,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By The Molass Community
+By Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </p>
 
   </div>

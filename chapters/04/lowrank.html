@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. Low Rank Factorization &#8212; Molass Library Essense</title>
+    <title>3. Low Rank Factorization &#8212; Molass Library Essense</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,8 +63,8 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5. Singular Value Decomposition" href="../05/svd.html" />
-    <link rel="prev" title="3. Simple Curves" href="../03/simple-curves.html" />
+    <link rel="next" title="4. Moore-Penrose Inverse" href="../05/mp-inverse.html" />
+    <link rel="prev" title="2. Matrices from Curves" href="../03/matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,18 +184,19 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01/data-illust.html">1. Data Illustration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02/baseline.html">2. Baseline Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/simple-curves.html">3. Simple Curves</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Low Rank Factorization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/svd.html">5. Singular Value Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/mp-inverse.html">6. Moore-Penrose Inverse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/optimization.html">7. Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">8. SAXS Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/chromat-basics.html">9. Chromatography Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/stochastic.html">10. Stochastic Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/kinetic.html">11. Kinetic Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../12/interparticle.html">12. Interparticle Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/errors.html">13. Error Porpagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/matrices.html">2. Matrices from Curves</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/mp-inverse.html">4. Moore-Penrose Inverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/svd.html">5. Singular Value Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/optimization.html">6. Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">7. SAXS Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/chromat-basics.html">8. Chromatography Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/stochastic.html">9. Stochastic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11/kinetic.html">10. Kinetic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/interparticle.html">11. Interparticle Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13/baseline.html">12. Baseline Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14/errors.html">13. Error Porpagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90/references.html">14. References</a></li>
 </ul>
 
     </div>
@@ -362,8 +363,8 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
-<h1><span class="section-number">4. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
-<p>Among the above mentioned steps, Low Rank Factorization<a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using elution curve models is the most distinctive feature of <code class="docutils literal notranslate"><span class="pre">Molass</span> <span class="pre">Library</span></code>. It is directly related to the decomposition of species contained in the sample, which is first attained physically by the Size Exclusion Chromatograpy, followed by logical estimation and optimization of the software. When the chromatographic peaks are sufficiently separated, the decomposition is relatively simple. Otherwise, i.e., when the peaks overlap widely, it becomes challenging due to underdeterminedness<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> from noise, the handling of which is beyond the scope of this paper and possibly might be studied using the future versions of this library.</p>
+<h1><span class="section-number">3. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
+<p>Among the above mentioned steps, Low Rank Factorization<a class="footnote-reference brackets" href="#id10" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using elution curve models is the most distinctive feature of <code class="docutils literal notranslate"><span class="pre">Molass</span> <span class="pre">Library</span></code>. It is directly related to the decomposition of species contained in the sample, which is first attained physically by the Size Exclusion Chromatograpy, followed by logical estimation and optimization of the software. When the chromatographic peaks are sufficiently separated, the decomposition is relatively simple. Otherwise, i.e., when the peaks overlap widely, it becomes challenging due to underdeterminedness<a class="footnote-reference brackets" href="#id11" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> from noise, the handling of which is beyond the scope of this paper and possibly might be studied using the future versions of this library.</p>
 <p>Here, we decribe the essense of easier part to give a basic idea of what it is all about. For discussion, it is convenient to use matrices. Ideally, then, the decomposition should be expressed as follows:</p>
 <div class="math notranslate nohighlight">
 \[ M = P \cdot C \qquad \qquad (1) \]</div>
@@ -375,27 +376,27 @@ document.write(`
 </ul>
 <p>See the following figure to get intuition of this decomposition.</p>
 <p><img alt="Illustratin of Decomposition using Simulated Data" src="../../_images/lrf-data.png" /></p>
-<p>Using the above relation, the solution can be calculated, in the sense of footnote<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, as follows:</p>
+<p>Using the above relation, the solution can be calculated, in the sense of footnote<a class="footnote-reference brackets" href="#id12" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, as follows:</p>
 <div class="math notranslate nohighlight">
 \[ P = M \cdot C^{+} \qquad \qquad (2) \]</div>
 <p>where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(C^{+}\)</span> : Moore-Penrose inverse. [&#64;Penrose_1955; &#64;Penrose_1956]</p></li>
+<li><p><span class="math notranslate nohighlight">\(C^{+}\)</span> : Moore-Penrose inverse. <span id="id4">[<a class="reference internal" href="../90/references.html#id19" title="R. Penrose. A generalized inverse for matrices. Mathematical Proceedings of the Cambridge Philosophical Society, 51(3):406–413, 1955. doi:10.1017/S0305004100030401.">Pen55</a>]</span>, <span id="id5">[<a class="reference internal" href="../90/references.html#id20" title="R. Penrose. On best approximate solutions of linear matrix equations. Mathematical Proceedings of the Cambridge Philosophical Society, 52(1):17–19, 1956. doi:10.1017/S0305004100030929.">Pen56</a>]</span></p></li>
 </ul>
 <p>Note that in formula <span class="math notranslate nohighlight">\((1)\)</span> and <span class="math notranslate nohighlight">\((2)\)</span>, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are equally eligible mathematically, but physically not. In fact, we get <span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, because <span class="math notranslate nohighlight">\(M\)</span> is given and it is easier to estimate <span class="math notranslate nohighlight">\(C\)</span> rather than <span class="math notranslate nohighlight">\(P\)</span>. The reason for this is as follows.</p>
-<p>For elution curves in <span class="math notranslate nohighlight">\(C\)</span>, the SEC principle [&#64;Striegel_2009] applies, where the component particles elute in the descending order of particle size, namely the larger comes earlier, resulting in curves with (hopefully) distant peaks, each of which is relatively easy to model as mentioned later.</p>
-<p>For scattering curves in <span class="math notranslate nohighlight">\(P\)</span> on the other hand, to the best of our knowledge, we only have classical models for extreme regions, namely, Guinier Approximation [&#64;Guinier_1939] for small angle regions and Porod’s law [&#64;Porod_1951] for larger angle regions, and none for intermediate regions. From our experience, models just smoothly linking those extreme regions, as the one used in the above figure [&#64;Hammouda:ce5078], do not seem applicable at least to real protein samples.</p>
+<p>For elution curves in <span class="math notranslate nohighlight">\(C\)</span>, the SEC principle <span id="id6">[<a class="reference internal" href="../90/references.html#id21" title="André M Striegel, Wallace W. Yau, Joseph J. Kirkland, and Donald D. Bly. Modern Size‐Exclusion Liquid Chromatography, chapter 2, pages 18-48. John Wiley &amp; Sons, Ltd, 2009. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470442876.ch2, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470442876.ch2, doi:https://doi.org/10.1002/9780470442876.ch2.">SYKB09</a>]</span> applies, where the component particles elute in the descending order of particle size, namely the larger comes earlier, resulting in curves with (hopefully) distant peaks, each of which is relatively easy to model as mentioned later.</p>
+<p>For scattering curves in <span class="math notranslate nohighlight">\(P\)</span> on the other hand, to the best of our knowledge, we only have classical models for extreme regions, namely, Guinier Approximation <span id="id7">[<a class="reference internal" href="../90/references.html#id22" title="A. Guinier. La diffraction des rayons x aux très petits angles : application à l'étude de phénomènes ultramicroscopiques. Ann. Phys., 11(12):161-237, 1939. URL: https://doi.org/10.1051/anphys/193911120161, doi:10.1051/anphys/193911120161.">Gui39</a>]</span> for small angle regions and Porod’s law <span id="id8">[<a class="reference internal" href="../90/references.html#id23" title="G. Porod. Die rontgenkleinwinkelstreuung von dichtgepackten kolloiden systemen i. teil. Kolloid Z, 124:83-114, 1951. URL: https://cir.nii.ac.jp/crid/1572261551288602112.">Por51</a>]</span> for larger angle regions, and none for intermediate regions. From our experience, models just smoothly linking those extreme regions, as the one used in the above figure <span id="id9">[<a class="reference internal" href="../90/references.html#id25" title="Boualem Hammouda. A new Guinier–Porod model. Journal of Applied Crystallography, 43(4):716–719, Aug 2010. URL: https://doi.org/10.1107/S0021889810015773, doi:10.1107/S0021889810015773.">Ham10</a>]</span>, do not seem applicable at least to real protein samples.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="doc-footnote">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Where it is often also called Low Rank Approximation, we prefer the word “Factorization” because, in this context, the latter word matches better, in psychological orientation, to decomposition.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="doc-footnote">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>By “underdeterminedness”, we mean here the situation where many decomposition candidates are found and we have no definite information to reduce them to a fewer number which can be studied effectively.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="doc-footnote">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p><span class="math notranslate nohighlight">\(P\)</span> is determined as the best possible solution which minimizes <span class="math notranslate nohighlight">\(\| M - P \cdot C \|\)</span>.</p>
 </aside>
@@ -433,20 +434,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../03/simple-curves.html"
+       href="../03/matrices.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Simple Curves</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Matrices from Curves</p>
       </div>
     </a>
     <a class="right-next"
-       href="../05/svd.html"
+       href="../05/mp-inverse.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Singular Value Decomposition</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Moore-Penrose Inverse</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -466,7 +467,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By The Molass Community
+By Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </p>
 
   </div>
