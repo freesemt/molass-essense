@@ -20,12 +20,19 @@ chapters:
   title: Optimization
 - file: chapters/08/saxs-basics
   title: SAXS Basics
-- file: chapters/09/chromat-basics
+- file: chapters/09/scattering_models
+  title: Scattering Curve Models  
+- file: chapters/10/chromat-basics
   title: Chromatography Basics
-- file: chapters/10/stochastic
-  title: Stochastic Models
-- file: chapters/11/kinetic
-  title: Kinetic Models
+- file: chapters/11/elution_models
+  title: Elution Curve Models
+  sections:
+  - file: chapters/11/classical
+    title: Classical Models
+  - file: chapters/11/stochastic
+    title: Stochastic Models
+  - file: chapters/11/kinetic
+    title: Kinetic Models
 - file: chapters/12/interparticle
   title: Interparticle Effects
 - file: chapters/13/baseline
