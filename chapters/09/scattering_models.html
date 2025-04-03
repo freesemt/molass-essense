@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Low Rank Factorization &#8212; Molass Library Essense</title>
+    <title>8. Scattering Curve Models &#8212; Molass Library Essense</title>
   
   
   
@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/lowrank';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/scattering_models';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Moore-Penrose Inverse" href="../05/mp-inverse.html" />
-    <link rel="prev" title="2. Matrices from Curves" href="../03/matrices.html" />
+    <link rel="next" title="9. Chromatography Basics" href="../10/chromat-basics.html" />
+    <link rel="prev" title="7. SAXS Basics" href="../08/saxs-basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,12 +185,12 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01/data-illust.html">1. Data Illustration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/matrices.html">2. Matrices from Curves</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lowrank.html">3. Low Rank Factorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/mp-inverse.html">4. Moore-Penrose Inverse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/svd.html">5. Singular Value Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/optimization.html">6. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">7. SAXS Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/scattering_models.html">8. Scattering Curve Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Scattering Curve Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/chromat-basics.html">9. Chromatography Basics</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../11/elution_models.html">10. Elution Curve Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../11/classical.html">10.1. Classical Models</a></li>
@@ -271,7 +271,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/04/lowrank.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/09/scattering_models.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +342,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -353,11 +355,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Low Rank Factorization</h1>
+    <h1>Scattering Curve Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#form-factors">8.1. Form Factors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homogeneous-sphere">8.1.1. Homogeneous sphere</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -367,49 +380,48 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
-<h1><span class="section-number">3. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
-<p>Among the above mentioned steps, Low Rank Factorization<a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using elution curve models is the most distinctive feature of <code class="docutils literal notranslate"><span class="pre">Molass</span> <span class="pre">Library</span></code>. It is directly related to the decomposition of species contained in the sample, which is first attained physically by the Size Exclusion Chromatography, followed by logical estimation and optimization of the software. When the chromatographic peaks are sufficiently separated, the decomposition is relatively simple. Otherwise, i.e., when the peaks overlap widely, it becomes challenging due to underdeterminedness<a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> from noise, the handling of which is beyond the scope of this paper and possibly might be studied using the future versions of this library.</p>
-<p>Here, we decribe the essense of easier part to give a basic idea of what it is all about. For discussion, it is convenient to use matrices. Ideally, then, the decomposition should be expressed as follows:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="scattering-curve-models">
+<h1><span class="section-number">8. </span>Scattering Curve Models<a class="headerlink" href="#scattering-curve-models" title="Link to this heading">#</a></h1>
+<p>Following <span id="id1">[<a class="reference internal" href="../90/references.html#id25" title="Jan Skov Pedersen. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. Advances in Colloid and Interface Science, 70:171-210, 1997. URL: https://www.sciencedirect.com/science/article/pii/S0001868697003126, doi:https://doi.org/10.1016/S0001-8686(97)00312-6.">Ped97</a>]</span>, we will glance over the models.</p>
+<section id="form-factors">
+<h2><span class="section-number">8.1. </span>Form Factors<a class="headerlink" href="#form-factors" title="Link to this heading">#</a></h2>
+<section id="homogeneous-sphere">
+<h3><span class="section-number">8.1.1. </span>Homogeneous sphere<a class="headerlink" href="#homogeneous-sphere" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
-\[ M = P \cdot C \qquad \qquad (1) \]</div>
-<p>where the symbols are</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(M\)</span> : matrix of measured data,</p></li>
-<li><p><span class="math notranslate nohighlight">\(P\)</span> : matrix made of columns of component scattering curves,</p></li>
-<li><p><span class="math notranslate nohighlight">\(C\)</span> : matrix made of rows of component elution curves.</p></li>
-</ul>
-<p>See the following figure to get intuition of this decomposition.</p>
-<p><img alt="Illustratin of Decomposition using Simulated Data" src="../../_images/lrf-data.png" /></p>
-<p>Using the above relation, the solution can be calculated, in the sense of footnote<a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, as follows:</p>
-<div class="math notranslate nohighlight">
-\[ P = M \cdot C^{+} \qquad \qquad (2) \]</div>
-<p>where</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(C^{+}\)</span> : Moore-Penrose inverse. <span id="id4">[<a class="reference internal" href="../90/references.html#id19" title="R. Penrose. A generalized inverse for matrices. Mathematical Proceedings of the Cambridge Philosophical Society, 51(3):406–413, 1955. doi:10.1017/S0305004100030401.">Pen55</a>]</span>, <span id="id5">[<a class="reference internal" href="../90/references.html#id20" title="R. Penrose. On best approximate solutions of linear matrix equations. Mathematical Proceedings of the Cambridge Philosophical Society, 52(1):17–19, 1956. doi:10.1017/S0305004100030929.">Pen56</a>]</span></p></li>
-</ul>
-<p>Note that in formula <span class="math notranslate nohighlight">\((1)\)</span> and <span class="math notranslate nohighlight">\((2)\)</span>, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are equally eligible mathematically, but physically not. In fact, we get <span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, because <span class="math notranslate nohighlight">\(M\)</span> is given and it is easier to estimate <span class="math notranslate nohighlight">\(C\)</span> rather than <span class="math notranslate nohighlight">\(P\)</span>. The reason for this is as follows.</p>
-<p>For elution curves in <span class="math notranslate nohighlight">\(C\)</span>, the SEC principle <span id="id6">[<a class="reference internal" href="../90/references.html#id21" title="André M Striegel, Wallace W. Yau, Joseph J. Kirkland, and Donald D. Bly. Modern Size‐Exclusion Liquid Chromatography, chapter 2, pages 18-48. John Wiley &amp; Sons, Ltd, 2009. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470442876.ch2, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470442876.ch2, doi:https://doi.org/10.1002/9780470442876.ch2.">SYKB09</a>]</span> applies, where the component particles elute in the descending order of particle size, namely the larger comes earlier, resulting in curves with (hopefully) distant peaks, each of which is relatively easy to model as mentioned later.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The above and following assertions are premature. Before so concluding, We have to investigate the possibility of the models reported in <span id="id7">[<a class="reference internal" href="../90/references.html#id25" title="Jan Skov Pedersen. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. Advances in Colloid and Interface Science, 70:171-210, 1997. URL: https://www.sciencedirect.com/science/article/pii/S0001868697003126, doi:https://doi.org/10.1016/S0001-8686(97)00312-6.">Ped97</a>]</span>.</p>
+\[ F_1(q,R) = \frac{3[\sin(q R) - q R \cos(q R)]}{(q R)^3} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.0.6&#39;</span>
+</pre></div>
 </div>
-<p>For scattering curves in <span class="math notranslate nohighlight">\(P\)</span> on the other hand, to the best of our knowledge, we only have classical models for extreme regions, namely, Guinier Approximation <span id="id8">[<a class="reference internal" href="../90/references.html#id22" title="A. Guinier. La diffraction des rayons x aux très petits angles : application à l'étude de phénomènes ultramicroscopiques. Ann. Phys., 11(12):161-237, 1939. URL: https://doi.org/10.1051/anphys/193911120161, doi:10.1051/anphys/193911120161.">Gui39</a>]</span> for small angle regions and Porod’s law <span id="id9">[<a class="reference internal" href="../90/references.html#id23" title="G. Porod. Die rontgenkleinwinkelstreuung von dichtgepackten kolloiden systemen i. teil. Kolloid Z, 124:83-114, 1951. URL: https://cir.nii.ac.jp/crid/1572261551288602112.">Por51</a>]</span> for larger angle regions, and none for intermediate regions. From our experience, models just smoothly linking those extreme regions, as the one used in the above figure <span id="id10">[<a class="reference internal" href="../90/references.html#id26" title="Boualem Hammouda. A new Guinier–Porod model. Journal of Applied Crystallography, 43(4):716–719, Aug 2010. URL: https://doi.org/10.1107/S0021889810015773, doi:10.1107/S0021889810015773.">Ham10</a>]</span>, do not seem applicable at least to real protein samples.</p>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Where it is often also called Low Rank Approximation, we prefer the word “Factorization” because, in this context, the latter word matches better, in psychological orientation, to decomposition.</p>
-</aside>
-<aside class="footnote brackets" id="id12" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>By “underdeterminedness”, we mean here the situation where many decomposition candidates are found and we have no definite information to reduce them to a fewer number which can be studied effectively.</p>
-</aside>
-<aside class="footnote brackets" id="id13" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p><span class="math notranslate nohighlight">\(P\)</span> is determined as the best possible solution which minimizes <span class="math notranslate nohighlight">\(\| M - P \cdot C \|\)</span>.</p>
-</aside>
-</aside>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass.CurveModels.Scattering.FormFactors</span> <span class="kn">import</span> <span class="n">homogeneous_sphere</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">I</span> <span class="o">=</span> <span class="n">homogeneous_sphere</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;homogeneous sphere&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1bee7df3b0a7399056526919ec4fed1ea80ecc7ce3537b5db21668252eb158f2.png" src="../../_images/1bee7df3b0a7399056526919ec4fed1ea80ecc7ce3537b5db21668252eb158f2.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -425,7 +437,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters\04"
+            path: "./chapters\09"
         },
         predefinedOutput: true
     }
@@ -443,20 +455,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../03/matrices.html"
+       href="../08/saxs-basics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Matrices from Curves</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SAXS Basics</p>
       </div>
     </a>
     <a class="right-next"
-       href="../05/mp-inverse.html"
+       href="../10/chromat-basics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Moore-Penrose Inverse</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Chromatography Basics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -466,6 +478,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#form-factors">8.1. Form Factors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homogeneous-sphere">8.1.1. Homogeneous sphere</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
