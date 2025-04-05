@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -188,9 +188,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/svd.html">5. Singular Value Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/optimization.html">6. Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/saxs-basics.html">7. SAXS Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09/chromat-basics.html">8. Chromatography Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/stochastic.html">9. Stochastic Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../11/kinetic.html">10. Kinetic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/scattering_models.html">8. Scattering Curve Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/chromat-basics.html">9. Chromatography Basics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../11/elution_models.html">10. Elution Curve Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../11/classical.html">10.1. Classical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11/stochastic.html">10.2. Stochastic Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../11/kinetic.html">10.3. Kinetic Models</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../12/interparticle.html">11. Interparticle Effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13/baseline.html">12. Baseline Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14/errors.html">13. Error Porpagation</a></li>
@@ -335,7 +340,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -351,6 +358,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-saxs-experiment">1.1. SEC-SAXS Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-data">1.2. Elution Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-absorbance-data">1.3. UV Absorbance Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-scattering-data">1.4. X-ray Scattering Data</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -362,6 +380,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-illustration">
 <h1><span class="section-number">1. </span>Data Illustration<a class="headerlink" href="#data-illustration" title="Link to this heading">#</a></h1>
+<section id="sec-saxs-experiment">
+<h2><span class="section-number">1.1. </span>SEC-SAXS Experiment<a class="headerlink" href="#sec-saxs-experiment" title="Link to this heading">#</a></h2>
+</section>
+<section id="elution-data">
+<h2><span class="section-number">1.2. </span>Elution Data<a class="headerlink" href="#elution-data" title="Link to this heading">#</a></h2>
+<div align="center"><img src="../../_static/animations/sec-saxs.gif" width="80%"></div></section>
+<section id="uv-absorbance-data">
+<h2><span class="section-number">1.3. </span>UV Absorbance Data<a class="headerlink" href="#uv-absorbance-data" title="Link to this heading">#</a></h2>
+</section>
+<section id="x-ray-scattering-data">
+<h2><span class="section-number">1.4. </span>X-ray Scattering Data<a class="headerlink" href="#x-ray-scattering-data" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -418,6 +448,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-saxs-experiment">1.1. SEC-SAXS Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-data">1.2. Elution Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-absorbance-data">1.3. UV Absorbance Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-scattering-data">1.4. X-ray Scattering Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
